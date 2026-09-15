@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="sphereGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#00ffff"/>
+      <stop offset="50%" stop-color="#0055ff"/>
+      <stop offset="100%" stop-color="#000022"/>
+    </radialGradient>
+    
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(0, 255, 255, 0.4)"/>
+      <stop offset="100%" stop-color="rgba(0, 255, 255, 0)"/>
+    </radialGradient>
+    
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00ffff" stroke-width="0.5" stroke-opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <style>
+    /* Physics-based Bounce Dynamics */
+    .bounce {
+      animation: bounce 1.5s infinite;
+    }
+    
+    /* Squash and Stretch Physics */
+    .squash {
+      animation: squash 1.5s infinite;
+      transform-origin: 400px 280px; /* Anchored to the bottom of the ball */
+    }
+    
+    /* Dynamic Floor Shadow */
+    .shadow {
+      animation: shadow 1.5s infinite;
+      transform-origin: 400px 460px; 
+    }
+
+    /* Advanced Cybernetic Flow Rings (Seamless Math Loops) */
+    .flow-1 {
+      stroke-dasharray: 60 20 10 20;
+      animation: flow-forward 2s linear infinite;
+    }
+    .flow-2 {
+      stroke-dasharray: 40 10 5 10 20 10;
+      animation: flow-backward 3s linear infinite;
+    }
+    
+    /* --- KEYFRAMES --- */
+    
+    @keyframes bounce {
+      0%, 100% { 
+        transform: translateY(0px); 
+        animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53); /* Accelerate falling down */
+      }
+      50% { 
+        transform: translateY(180px); 
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Decelerate springing up */
+      }
+    }
+    
+    @keyframes squash {
+      0%, 100% { transform: scale(1, 1); }
+      40% { transform: scale(0.9, 1.15); } /* Elongate while falling at max speed */
+      50% { transform: scale(1.4, 0.6); }  /* Violent impact squash */
+      60% { transform: scale(0.9, 1.15); } /* Elongate while springing back up */
+    }
+    
+    @keyframes shadow {
+      0%, 100% { transform: scale(0.4); opacity: 0.15; } /* Small faint shadow when high */
+      50% { transform: scale(1.2); opacity: 0.8; }       /* Large dark shadow at impact */
+    }
+    
+    @keyframes flow-forward {
+      0% { stroke-dashoffset: 110; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes flow-backward {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 95; }
+    }
+  </style>
+
+  <rect width="100%" height="100%" fill="#0d1117"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+
+  <line x1="0" y1="460" x2="800" y2="460" stroke="#00ffff" stroke-width="1" stroke-opacity="0.3"/>
+
+  <ellipse class="shadow" cx="400" cy="460" rx="90" ry="15" fill="#000000" />
+
+  <g class="bounce">
+    <g class="squash">
+      <circle cx="400" cy="200" r="130" fill="url(#glowGrad)" />
+      
+      <circle cx="400" cy="200" r="80" fill="url(#sphereGrad)" />
+      
+      <ellipse class="flow-1" cx="400" cy="200" rx="95" ry="30" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.9" transform="rotate(-15 400 200)"/>
+      
+      <ellipse class="flow-2" cx="400" cy="200" rx="40" ry="105" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7" transform="rotate(25 400 200)"/>
+      
+      <circle class="flow-1" cx="400" cy="200" r="40" fill="none" stroke="#0055ff" stroke-width="4" opacity="0.8"/>
+    </g>
+  </g>
+</svg>
